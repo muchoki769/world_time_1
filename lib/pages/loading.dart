@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:world_time_1/services/world_time.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+
+
 
 class Loading extends StatefulWidget {
   const Loading({super.key});
@@ -36,6 +39,7 @@ class _LoadingState extends State<Loading> {
       'location': instance.location,
       'flag': instance.flag,
       'time':instance.time,
+      'isDaytime':instance.isDaytime,
     });
     // print(instance.time);
     //for updating time
@@ -48,10 +52,35 @@ class _LoadingState extends State<Loading> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: EdgeInsets.all(50.0),
-      child: Text('loading...'),
-      )
+      backgroundColor: Colors.blue[900],
+      body: Center(
+        // child: SpinKitFadingCircle(
+
+        child: SpinKitChasingDots(
+          color: Colors.white,
+          size: 80.0,
+        ) ,
+      ),
+      // body:SafeArea(child: Stack(
+      //   children: <Widget>[
+      //     Align(
+      //       child: Builder(
+      //         builder: (context) => IconButton(
+      //           icon: const Icon(Icons.play_circle_filled),
+      //           iconSize: 50.0,
+      //           onPressed: () => Navigator.of(context).push(
+      //             MaterialPageRoute<void>(
+      //               builder: (_) => const Showcase(),
+      //               fullscreenDialog: true,
+      //             ),
+      //           ),
+      //         ),
+      //       ),
+      //       alignment: Alignment.bottomCenter,
+      //     ),
+      //     const Positioned.fill(child: Center(child:Workspace())),
+      //   ],
+      // )),
     );
   }
 }
